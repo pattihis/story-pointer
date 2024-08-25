@@ -1,0 +1,30 @@
+#welcome,
+#estimation,
+#inputScore,
+#recentPoints {
+  width: 100%;
+  max-width: 900px;
+}
+
+#estimation,
+#inputScore,
+#recentPoints {
+  display: none;
+}
+
+.jumbotron {
+  background-color: white;
+}
+
+#viewPoints {
+  cursor: pointer;
+}
+
+#answers {
+  width: 100%;
+  max-width: 600px;
+}
+
+#fibonacci {
+  cursor: initial;
+}

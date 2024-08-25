@@ -45,6 +45,7 @@ function show(element) {
 function reset() {
   score = 0;
   currentQ = 0;
+  userScore.textContent = score;
 }
 
 function renderQuestion() {

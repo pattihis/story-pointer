@@ -6,6 +6,7 @@ const answersEl = document.getElementById('answers');
 const inputScore = document.getElementById('inputScore');
 const saveTaskBtn = document.getElementById('saveTask');
 const userScore = document.getElementById('score');
+const prevQuestionBtn = document.getElementById('previousQuestion');
 const recentPointsEl = document.getElementById('recentPoints');
 const scoresEl = document.getElementById('scores');
 const goBackBtn = document.getElementById('goBack');
@@ -14,6 +15,7 @@ const viewPointsBtn = document.getElementById('viewPoints');
 
 let score = 0;
 let currentQ = 0;
+let answersArr = [];
 let recentPoints = [];
 
 function nextQuestion() {
@@ -29,7 +31,16 @@ function nextQuestion() {
   }
 }
 
+function prevQuestion() {
+  currentQ--;
+  answersArr.pop();
+  score = answersArr.reduce((acc, val) => acc + parseInt(val), 0);
+  userScore.textContent = score;
+  renderQuestion();
+}
+
 function addScore(value) {
+  answersArr.push(value);
   score += parseInt(value);
   userScore.textContent = score;
 }
@@ -49,6 +60,11 @@ function reset() {
 }
 
 function renderQuestion() {
+  if (currentQ === 0) {
+    hide(prevQuestionBtn);
+  } else {
+    show(prevQuestionBtn);
+  }
   answersEl.innerHTML = '';
   questionEl.textContent = questions[currentQ].title;
   Object.entries(questions[currentQ].choices).forEach(([key, val]) => {
@@ -72,7 +88,7 @@ function renderStoryPoints() {
 
 function createButton(key, val) {
   let button = document.createElement('button');
-  button.className = 'btn btn-outline-dark btn-lg mr-2';
+  button.className = 'btn btn-outline-dark btn-lg mr-2 mb-2';
   button.textContent = key;
   button.dataset.value = val;
   return button;
@@ -99,6 +115,10 @@ answersEl.addEventListener('click', function (e) {
     addScore(e.target.dataset.value);
     nextQuestion();
   }
+});
+
+prevQuestionBtn.addEventListener('click', function () {
+  prevQuestion();
 });
 
 viewPointsBtn.addEventListener('click', function () {

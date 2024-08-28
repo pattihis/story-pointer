@@ -36,14 +36,23 @@
         <h1 class="h1 mb-4">All done!</h1>
         <p class="mb-1 h2">Your story points: <span id="fibonacci" class="btn-dark btn btn-lg"></span></p>
         <p class="mb-4">The next Fibonacci number is used, if your score is not one already.</p>
-        <p class="lead mb-4">Enter Task ID or comment: <input type="text" id="task"></p>
-        <button type="button" class="btn btn-dark btn-lg" id="saveTask">Save to local storage</button>
+        <button type="button" class="btn btn-dark btn-sm" id="lastBack">Previous Step</button>
+        <div class="container mb-4 mt-4"><ul id="taskSummary"></ul></div>
+        <p class="lead mt-4 mb-4">Enter Task ID or comment: <input type="text" id="task"></p>
+        <button type="button" class="btn btn-dark btn-lg" id="saveTask">Save score to local storage</button>
       </div>
       <div class="container" id="recentPoints">
         <h1 class="h1 mb-4 font-weigth-bold">Recent Story Point Estimations</h1>
         <div class="container h4 mb-4" id="scores"></div>
         <button type="button" class="btn btn-dark btn-lg" id="goBack">Go Back</button>
         <button type="button" class="btn btn-dark btn-lg" id="clearPoints">Clear Scores</button>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5 pt-5 mb-3" id="questionCounter">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="h4" id="counter"></p>
       </div>
     </div>
   </div>

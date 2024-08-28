@@ -8,6 +8,7 @@
 }
 
 #estimation,
+#questionCounter,
 #inputScore,
 #recentPoints {
   display: none;
@@ -32,6 +33,14 @@
 
 #fibonacci {
   cursor: initial;
+}
+
+#taskSummary li {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  padding: 8px;
+  background: #f0f0f0;
 }
 
 @media screen and (max-width: 768px) {

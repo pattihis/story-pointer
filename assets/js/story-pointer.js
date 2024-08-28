@@ -3,6 +3,7 @@ const startEstimation = document.getElementById('startEstimation');
 const estimationEl = document.getElementById('estimation');
 const questionEl = document.getElementById('question');
 const answersEl = document.getElementById('answers');
+const questionCounter = document.getElementById('questionCounter');
 const inputScore = document.getElementById('inputScore');
 const saveTaskBtn = document.getElementById('saveTask');
 const userScore = document.getElementById('score');
@@ -12,6 +13,8 @@ const scoresEl = document.getElementById('scores');
 const goBackBtn = document.getElementById('goBack');
 const clearPointsBtn = document.getElementById('clearPoints');
 const viewPointsBtn = document.getElementById('viewPoints');
+const lastBackBtn = document.getElementById('lastBack');
+const taskSummary = document.getElementById('taskSummary');
 
 let score = 0;
 let currentQ = 0;
@@ -26,8 +29,7 @@ function nextQuestion() {
     score = ceilToFibonacci(score);
     document.getElementById('fibonacci').textContent = score;
     userScore.textContent = score;
-    hide(estimationEl);
-    show(inputScore);
+    renderSummary();
   }
 }
 
@@ -36,6 +38,9 @@ function prevQuestion() {
   answersArr.pop();
   score = answersArr.reduce((acc, val) => acc + parseInt(val), 0);
   userScore.textContent = score;
+  show(estimationEl);
+  show(questionCounter);
+  hide(inputScore);
   renderQuestion();
 }
 
@@ -70,6 +75,7 @@ function renderQuestion() {
   Object.entries(questions[currentQ].choices).forEach(([key, val]) => {
     answersEl.appendChild(createButton(key, val));
   });
+  document.getElementById('counter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
 }
 
 function renderStoryPoints() {
@@ -104,10 +110,26 @@ function ceilToFibonacci(n) {
   return fibonacciNumbers[fibonacciNumbers.length - 1];
 }
 
+function renderSummary() {
+  taskSummary.innerHTML = '';
+  answersArr.forEach((answer, index) => {
+    let summaryItem = document.createElement('li');
+    let answerItem = document.createElement('span');
+    answerItem.textContent = answer;
+    summaryItem.textContent = `${questions[index].title}`;
+    summaryItem.appendChild(answerItem);
+    taskSummary.appendChild(summaryItem);
+  });
+  hide(estimationEl);
+  hide(questionCounter);
+  show(inputScore);
+}
+
 startEstimation.addEventListener('click', function () {
   hide(welcomeEl);
   renderQuestion();
   show(estimationEl);
+  show(questionCounter);
 });
 
 answersEl.addEventListener('click', function (e) {
@@ -121,9 +143,14 @@ prevQuestionBtn.addEventListener('click', function () {
   prevQuestion();
 });
 
+lastBackBtn.addEventListener('click', function () {
+  prevQuestion();
+});
+
 viewPointsBtn.addEventListener('click', function () {
   hide(welcomeEl);
   hide(estimationEl);
+  hide(questionCounter);
   hide(inputScore);
   renderStoryPoints();
   reset();

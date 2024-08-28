@@ -51,4 +51,17 @@
   .h2 {
     font-size: 1.25rem;
   }
+
+  .container {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+
+  #taskSummary li {
+    flex-direction: column;
+  }
+
+  #taskSummary li span {
+    margin-top: 8px;
+  }
 }

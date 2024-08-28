@@ -4,7 +4,7 @@ var questions = [
     choices: { Yes: 0, No: 2 },
   },
   {
-    title: 'Do you think caching is involved or will be affected?',
+    title: 'Do you think caching is involved or will possibly be affected?',
     choices: { Yes: 2, No: 0 },
   },
   {
@@ -17,11 +17,11 @@ var questions = [
   },
   {
     title:
-      'How much work do you think will be required to reproduce the issue or see the feature run?',
+      'How much work will be required to reproduce the issue or see the feature run?',
     choices: { Little: 0, 'Some (existing setup)': 1, 'A lot (new setup)': 2 },
   },
   {
-    title: 'Do you think this could this be a PHP/WP version issue?',
+    title: 'Do you think this could be a PHP or WP version issue?',
     choices: { Yes: 1, No: 0 },
   },
   {
@@ -30,7 +30,7 @@ var questions = [
   },
   {
     title:
-      'Do you think this work affects the visitor-facing (READ) or admin-facing (WRITE) part of the request?',
+      'Do you think this will affect the visitor-facing (Read) or admin-facing (Write) part of the request?',
     choices: { Read: 1, Write: 0 },
   },
   {

@@ -11,6 +11,7 @@ const prevQuestionBtn = document.getElementById('previousQuestion');
 const recentPointsEl = document.getElementById('recentPoints');
 const scoresEl = document.getElementById('scores');
 const goBackBtn = document.getElementById('goBack');
+const startOverBtn = document.getElementById('startOver');
 const clearPointsBtn = document.getElementById('clearPoints');
 const viewPointsBtn = document.getElementById('viewPoints');
 const lastBackBtn = document.getElementById('lastBack');
@@ -174,4 +175,8 @@ clearPointsBtn.addEventListener('click', function () {
   recentPoints = [];
   localStorage.setItem('storyPoints', JSON.stringify(recentPoints));
   goBackBtn.click();
+});
+
+startOverBtn.addEventListener('click', function () {
+  window.location.reload();
 });
